@@ -273,7 +273,7 @@ Disassembly of section .text:
      3e4:	e58b6000 	str	r6, [r11]
      3e8:	e59db004 	ldr	r11, [sp, #4]
      3ec:	e58da000 	str	r10, [sp]
-     3f0:	e3a0a002 	mov	r10, #2
+     3f0:	e3a0a004 	mov	r10, #4
      3f4:	e5896000 	str	r6, [r9]
      3f8:	e58ba000 	str	r10, [r11]
      3fc:	e59db000 	ldr	r11, [sp]
