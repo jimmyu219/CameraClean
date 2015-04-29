@@ -1,0 +1,17 @@
+// Accumulator module
+// Adds up all ROW and COL values in verilog
+//	So the HPS can request it rather than add up everything in software
+
+module myAccumulator (
+	input 	[9:0] 	iData,
+	output 	[9:0] 	oData,
+	input					iCLK,
+	input					iRST,
+	input 				iRW,
+	input		[9:0]		iRow,
+	input		[9:0]		iCol,
+	input					iDVAL
+	);
+	
+reg 	[9:0]	RowMem[479:0];  
+reg 	[9:0]	ColMem[639:0];

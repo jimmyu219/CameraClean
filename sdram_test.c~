@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+//# include "demo.h"		// Neural network 
+
+int DEBUG = 1;
+
+volatile int * Start			= (int *) 0xFF200080;
+//volatile int * Stop		= (int *) 0xFF200010;
+
+volatile int * Clock			= (int *) 0xFF200000;
+
+volatile int * Din			= (int *) 0xFF200050;
+volatile int * Dout			= (int *) 0xFF200040;
+
+volatile int * in1			= (int *) 0xFF200060;		// Used for coutner[1] ACK
+//volatile int * in2			= (int *) 0xFF200070;
+volatile int * out1			= (int *) 0xFF200020;		// Supposed to be used for test output
+//volatile int * out2			= (int *) 0xFF200030;
+
+volatile int * DDR3			= (int *) 0x0010000; // Up to 0xFFF0000
+
+volatile int * sdram		        = (int * )0xC0000000; // sdram
+
+int main(void) {
+	
+	int mask = 0xFF; 
+
+	*(Start) = 1;
+
+	while(1){
+
+
+		//int img [480][640];		// Array that holds image
+		//int binary[480][640];	// Array that holds the binary version of the img
+		
+		int rows = 0;			// Indices for loops
+		int cols = 0;			// Indices for loops
+		
+
+		//takes the image and convert to a binary image
+		for(rows = 0 ; rows <480 ; rows++)
+		{
+			for(cols = 0 ; cols < 640; cols++)
+			{
+				if ((*sdram & mask) > 127)
+					printf(".");
+				else
+					printf("0");
+
+				sdram = sdram + 1;
+			}
+			printf("\n");
+		}
+		
+
+
+
+
+
+
+	}
+
+	return 0;
+}

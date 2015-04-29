@@ -1,0 +1,195 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/ --output-directory=C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/ --report-file=bsf:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem.qsys
+Progress: Loading lab6warmup/mysystem.qsys
+Progress: Reading input file
+Progress: Adding system_pll [altera_up_avalon_sys_sdram_pll 13.1]
+Progress: Parameterizing module system_pll
+Progress: Adding arm_a9_hps [altera_hps 13.1]
+Progress: Parameterizing module arm_a9_hps
+Progress: Adding Onchip_SRAM [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module Onchip_SRAM
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding mux_select [altera_avalon_pio 13.1]
+Progress: Parameterizing module mux_select
+Progress: Adding fpga_to_hps_0 [altera_avalon_pio 13.1]
+Progress: Parameterizing module fpga_to_hps_0
+Progress: Adding fpga_to_hps_1 [altera_avalon_pio 13.1]
+Progress: Parameterizing module fpga_to_hps_1
+Progress: Adding hps_to_fpga_0 [altera_avalon_pio 13.1]
+Progress: Parameterizing module hps_to_fpga_0
+Progress: Adding hps_to_fpga_1 [altera_avalon_pio 13.1]
+Progress: Parameterizing module hps_to_fpga_1
+Progress: Adding fpga_to_hps_read [altera_avalon_pio 13.1]
+Progress: Parameterizing module fpga_to_hps_read
+Progress: Adding hps_to_fpga_read [altera_avalon_pio 13.1]
+Progress: Parameterizing module hps_to_fpga_read
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/ --output-directory=C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/ --file-set=QUARTUS_SYNTH --report-file=html:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem.html --report-file=sopcinfo:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem.sopcinfo --report-file=cmp:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem.cmp --report-file=qip:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/mysystem.qip --report-file=svd --report-file=regmap:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/mysystem.regmap --report-file=debuginfo:C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/mysystem.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem.qsys --language=VERILOG
+Progress: Loading lab6warmup/mysystem.qsys
+Progress: Reading input file
+Progress: Adding system_pll [altera_up_avalon_sys_sdram_pll 13.1]
+Progress: Parameterizing module system_pll
+Progress: Adding arm_a9_hps [altera_hps 13.1]
+Progress: Parameterizing module arm_a9_hps
+Progress: Adding Onchip_SRAM [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module Onchip_SRAM
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding mux_select [altera_avalon_pio 13.1]
+Progress: Parameterizing module mux_select
+Progress: Adding fpga_to_hps_0 [altera_avalon_pio 13.1]
+Progress: Parameterizing module fpga_to_hps_0
+Progress: Adding fpga_to_hps_1 [altera_avalon_pio 13.1]
+Progress: Parameterizing module fpga_to_hps_1
+Progress: Adding hps_to_fpga_0 [altera_avalon_pio 13.1]
+Progress: Parameterizing module hps_to_fpga_0
+Progress: Adding hps_to_fpga_1 [altera_avalon_pio 13.1]
+Progress: Parameterizing module hps_to_fpga_1
+Progress: Adding fpga_to_hps_read [altera_avalon_pio 13.1]
+Progress: Parameterizing module fpga_to_hps_read
+Progress: Adding hps_to_fpga_read [altera_avalon_pio 13.1]
+Progress: Parameterizing module hps_to_fpga_read
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: mysystem: Generating mysystem "mysystem" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 11 modules, 40 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 3 modules, 5 connections
+Info: merlin_translator_transform: After transform: 4 modules, 9 connections
+Info: merlin_domain_transform: After transform: 9 modules, 38 connections
+Info: merlin_router_transform: After transform: 12 modules, 48 connections
+Info: merlin_burst_transform: After transform: 13 modules, 52 connections
+Info: merlin_network_to_switch_transform: After transform: 18 modules, 63 connections
+Info: merlin_width_transform: After transform: 20 modules, 71 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 23 modules, 92 connections
+Info: merlin_hierarchy_transform: After transform: 12 modules, 45 connections
+Info: merlin_initial_interconnect_transform: After transform: 10 modules, 33 connections
+Info: merlin_translator_transform: After transform: 18 modules, 65 connections
+Info: merlin_domain_transform: After transform: 44 modules, 220 connections
+Info: merlin_router_transform: After transform: 54 modules, 258 connections
+Info: merlin_traffic_limiter_transform: After transform: 56 modules, 266 connections
+Info: merlin_burst_transform: After transform: 64 modules, 298 connections
+Info: merlin_network_to_switch_transform: After transform: 83 modules, 358 connections
+Info: limiter_update_transform: After transform: 83 modules, 360 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 86 modules, 444 connections
+Info: merlin_hierarchy_transform: After transform: 13 modules, 50 connections
+Info: merlin_mm_transform: After transform: 13 modules, 50 connections
+Warning: arm_a9_hps.f2h_irq0: Cannot connect clock for irq_mapper.sender
+Warning: arm_a9_hps.f2h_irq0: Cannot connect reset for irq_mapper.sender
+Warning: arm_a9_hps.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
+Warning: arm_a9_hps.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+Info: merlin_interrupt_mapper_transform: After transform: 15 modules, 52 connections
+Info: reset_adaptation_transform: After transform: 18 modules, 57 connections
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 1 connections
+Info: No custom instruction connections, skipping transform 
+Info: system_pll: "mysystem" instantiated altera_up_avalon_sys_sdram_pll "system_pll"
+Info: arm_a9_hps: "Doing Pretransform for module: arm_a9_hps"
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 0 connections
+Info: No custom instruction connections, skipping transform 
+Info: arm_a9_hps: "mysystem" instantiated altera_hps "arm_a9_hps"
+Info: Onchip_SRAM: Starting RTL generation for module 'mysystem_Onchip_SRAM'
+Info: Onchip_SRAM:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=mysystem_Onchip_SRAM --dir=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0001_Onchip_SRAM_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0001_Onchip_SRAM_gen//mysystem_Onchip_SRAM_component_configuration.pl  --do_build_sim=0  ]
+Info: Onchip_SRAM: Done RTL generation for module 'mysystem_Onchip_SRAM'
+Info: Onchip_SRAM: "mysystem" instantiated altera_avalon_onchip_memory2 "Onchip_SRAM"
+Info: jtag_uart: Starting RTL generation for module 'mysystem_jtag_uart'
+Info: jtag_uart:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=mysystem_jtag_uart --dir=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0002_jtag_uart_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0002_jtag_uart_gen//mysystem_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'mysystem_jtag_uart'
+Info: jtag_uart: "mysystem" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: mux_select: Starting RTL generation for module 'mysystem_mux_select'
+Info: mux_select:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=mysystem_mux_select --dir=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0003_mux_select_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0003_mux_select_gen//mysystem_mux_select_component_configuration.pl  --do_build_sim=0  ]
+Info: mux_select: Done RTL generation for module 'mysystem_mux_select'
+Info: mux_select: "mysystem" instantiated altera_avalon_pio "mux_select"
+Info: fpga_to_hps_0: Starting RTL generation for module 'mysystem_fpga_to_hps_0'
+Info: fpga_to_hps_0:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=mysystem_fpga_to_hps_0 --dir=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0004_fpga_to_hps_0_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0004_fpga_to_hps_0_gen//mysystem_fpga_to_hps_0_component_configuration.pl  --do_build_sim=0  ]
+Info: fpga_to_hps_0: Done RTL generation for module 'mysystem_fpga_to_hps_0'
+Info: fpga_to_hps_0: "mysystem" instantiated altera_avalon_pio "fpga_to_hps_0"
+Info: hps_to_fpga_0: Starting RTL generation for module 'mysystem_hps_to_fpga_0'
+Info: hps_to_fpga_0:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=mysystem_hps_to_fpga_0 --dir=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0005_hps_to_fpga_0_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0005_hps_to_fpga_0_gen//mysystem_hps_to_fpga_0_component_configuration.pl  --do_build_sim=0  ]
+Info: hps_to_fpga_0: Done RTL generation for module 'mysystem_hps_to_fpga_0'
+Info: hps_to_fpga_0: "mysystem" instantiated altera_avalon_pio "hps_to_fpga_0"
+Info: fpga_to_hps_read: Starting RTL generation for module 'mysystem_fpga_to_hps_read'
+Info: fpga_to_hps_read:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=mysystem_fpga_to_hps_read --dir=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0006_fpga_to_hps_read_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6482_5948697085042516041.dir/0006_fpga_to_hps_read_gen//mysystem_fpga_to_hps_read_component_configuration.pl  --do_build_sim=0  ]
+Info: fpga_to_hps_read: Done RTL generation for module 'mysystem_fpga_to_hps_read'
+Info: fpga_to_hps_read: "mysystem" instantiated altera_avalon_pio "fpga_to_hps_read"
+Info: pipeline_bridge_swap_transform: After transform: 20 modules, 57 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 20 modules, 57 connections
+Info: mm_interconnect_0: "mysystem" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_0"
+Info: pipeline_bridge_swap_transform: After transform: 76 modules, 264 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 76 modules, 264 connections
+Info: mm_interconnect_1: "mysystem" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_1"
+Info: irq_mapper: "mysystem" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_mapper_001: "mysystem" instantiated altera_irq_mapper "irq_mapper_001"
+Info: rst_controller: "mysystem" instantiated altera_reset_controller "rst_controller"
+Info: sys_pll: "system_pll" instantiated altera_pll "sys_pll"
+Info: reset_from_locked: "system_pll" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
+Info: fpga_interfaces: "arm_a9_hps" instantiated altera_interface_generator "fpga_interfaces"
+Info: pipeline_bridge_swap_transform: After transform: 1 modules, 0 connections
+Info: No custom instruction connections, skipping transform 
+Info: hps_io: "arm_a9_hps" instantiated altera_hps_io "hps_io"
+Info: Onchip_SRAM_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "Onchip_SRAM_s1_translator"
+Info: arm_a9_hps_h2f_axi_master_agent: "mm_interconnect_0" instantiated altera_merlin_axi_master_ni "arm_a9_hps_h2f_axi_master_agent"
+Info: Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent"
+Info: Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info: addr_router: "mm_interconnect_0" instantiated altera_merlin_router "addr_router"
+Info: id_router: "mm_interconnect_0" instantiated altera_merlin_router "id_router"
+Info: burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "burst_adapter"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: cmd_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: rsp_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "width_adapter"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: addr_router: "mm_interconnect_1" instantiated altera_merlin_router "addr_router"
+Info: id_router: "mm_interconnect_1" instantiated altera_merlin_router "id_router"
+Info: limiter: "mm_interconnect_1" instantiated altera_merlin_traffic_limiter "limiter"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: cmd_xbar_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab6/lab6warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: mysystem: Done "mysystem" with 38 modules, 87 files, 2407807 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

@@ -1,0 +1,34 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/ --output-directory=C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem/ --report-file=bsf:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem.qsys
+Progress: Loading Camera/mysystem.qsys
+Progress: Reading input file
+Progress: Adding system_pll_0 [altera_pll 13.1]
+Progress: Parameterizing module system_pll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: mysystem.system_pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: mysystem.system_pll_0: Able to implement PLL with user settings
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/ --output-directory=C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem/synthesis/ --file-set=QUARTUS_SYNTH --report-file=html:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem.html --report-file=sopcinfo:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem.sopcinfo --report-file=cmp:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem.cmp --report-file=qip:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem/synthesis/mysystem.qip --report-file=svd --report-file=regmap:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem/synthesis/mysystem.regmap --report-file=debuginfo:C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem/synthesis/mysystem.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/TeGods/Desktop/EEC181/lab6/FilesToPutOnSmartsite/Camera/mysystem.qsys --language=VERILOG
+Progress: Loading Camera/mysystem.qsys
+Progress: Reading input file
+Progress: Adding system_pll_0 [altera_pll 13.1]
+Progress: Parameterizing module system_pll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: mysystem.system_pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: mysystem.system_pll_0: Able to implement PLL with user settings
+Info: mysystem: Generating mysystem "mysystem" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 1 modules, 0 connections
+Info: No custom instruction connections, skipping transform 
+Info: system_pll_0: "mysystem" instantiated altera_pll "system_pll_0"
+Info: mysystem: Done "mysystem" with 2 modules, 3 files, 3705 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

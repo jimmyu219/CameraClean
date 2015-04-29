@@ -1,0 +1,204 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/ --output-directory=C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/ --report-file=bsf:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem.qsys
+Progress: Loading lab3warmup/mysystem.qsys
+Progress: Reading input file
+Progress: Adding system_pll [altera_up_avalon_sys_sdram_pll 13.1]
+Progress: Parameterizing module system_pll
+Progress: Adding arm_a9_hps [altera_hps 13.1]
+Progress: Parameterizing module arm_a9_hps
+Progress: Adding Onchip_SRAM [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module Onchip_SRAM
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding vga_system [vgasystem 1.0]
+Progress: Parameterizing module vga_system
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: mysystem.vga_system.VGA_Pixel_RGB_Resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
+Info: mysystem.vga_system.VGA_Pixel_Scaler: Change in Resolution: 320 x 240 -> 640 x 480
+Info: mysystem.vga_system.VGA_Char_Buffer: Character Resolution: 80 x 60
+Info: mysystem.vga_system.VGA_Controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/ --output-directory=C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/ --file-set=QUARTUS_SYNTH --report-file=html:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem.html --report-file=sopcinfo:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem.sopcinfo --report-file=cmp:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem.cmp --report-file=qip:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/mysystem.qip --report-file=svd --report-file=regmap:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/mysystem.regmap --report-file=debuginfo:C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/mysystem.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem.qsys --language=VERILOG
+Progress: Loading lab3warmup/mysystem.qsys
+Progress: Reading input file
+Progress: Adding system_pll [altera_up_avalon_sys_sdram_pll 13.1]
+Progress: Parameterizing module system_pll
+Progress: Adding arm_a9_hps [altera_hps 13.1]
+Progress: Parameterizing module arm_a9_hps
+Progress: Adding Onchip_SRAM [altera_avalon_onchip_memory2 13.1]
+Progress: Parameterizing module Onchip_SRAM
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding vga_system [vgasystem 1.0]
+Progress: Parameterizing module vga_system
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: mysystem.vga_system.VGA_Pixel_RGB_Resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
+Info: mysystem.vga_system.VGA_Pixel_Scaler: Change in Resolution: 320 x 240 -> 640 x 480
+Info: mysystem.vga_system.VGA_Char_Buffer: Character Resolution: 80 x 60
+Info: mysystem.vga_system.VGA_Controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+Info: mysystem: Generating mysystem "mysystem" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 5 modules, 19 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 4 modules, 9 connections
+Info: merlin_translator_transform: After transform: 6 modules, 17 connections
+Info: merlin_domain_transform: After transform: 14 modules, 64 connections
+Info: merlin_router_transform: After transform: 18 modules, 78 connections
+Info: merlin_traffic_limiter_transform: After transform: 20 modules, 86 connections
+Info: merlin_burst_transform: After transform: 22 modules, 94 connections
+Info: merlin_network_to_switch_transform: After transform: 29 modules, 112 connections
+Info: merlin_width_transform: After transform: 33 modules, 128 connections
+Info: limiter_update_transform: After transform: 33 modules, 130 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 37 modules, 165 connections
+Info: merlin_hierarchy_transform: After transform: 6 modules, 26 connections
+Info: merlin_initial_interconnect_transform: After transform: 4 modules, 10 connections
+Info: merlin_translator_transform: After transform: 7 modules, 22 connections
+Info: merlin_domain_transform: After transform: 18 modules, 87 connections
+Info: merlin_router_transform: After transform: 23 modules, 105 connections
+Info: merlin_traffic_limiter_transform: After transform: 25 modules, 113 connections
+Info: merlin_burst_transform: After transform: 28 modules, 125 connections
+Info: merlin_network_to_switch_transform: After transform: 37 modules, 150 connections
+Info: limiter_update_transform: After transform: 37 modules, 152 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 41 modules, 191 connections
+Info: merlin_hierarchy_transform: After transform: 7 modules, 33 connections
+Info: merlin_initial_interconnect_transform: After transform: 4 modules, 7 connections
+Info: merlin_translator_transform: After transform: 6 modules, 15 connections
+Info: merlin_domain_transform: After transform: 10 modules, 38 connections
+Info: merlin_router_transform: After transform: 12 modules, 46 connections
+Info: merlin_network_to_switch_transform: After transform: 15 modules, 54 connections
+Info: merlin_width_transform: After transform: 17 modules, 62 connections
+Info: merlin_clock_and_reset_bridge_transform: After transform: 20 modules, 80 connections
+Info: merlin_hierarchy_transform: After transform: 8 modules, 39 connections
+Info: merlin_mm_transform: After transform: 8 modules, 39 connections
+Warning: arm_a9_hps.f2h_irq0: Cannot connect clock for irq_mapper.sender
+Warning: arm_a9_hps.f2h_irq0: Cannot connect reset for irq_mapper.sender
+Warning: arm_a9_hps.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
+Warning: arm_a9_hps.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+Info: merlin_interrupt_mapper_transform: After transform: 10 modules, 41 connections
+Info: reset_adaptation_transform: After transform: 14 modules, 47 connections
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 1 connections
+Info: No custom instruction connections, skipping transform 
+Info: system_pll: "mysystem" instantiated altera_up_avalon_sys_sdram_pll "system_pll"
+Info: arm_a9_hps: "Doing Pretransform for module: arm_a9_hps"
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 0 connections
+Info: No custom instruction connections, skipping transform 
+Info: arm_a9_hps: "mysystem" instantiated altera_hps "arm_a9_hps"
+Info: Onchip_SRAM: Starting RTL generation for module 'mysystem_Onchip_SRAM'
+Info: Onchip_SRAM:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=mysystem_Onchip_SRAM --dir=C:/Users/TeGods/AppData/Local/Temp/alt6380_4869735803581063996.dir/0001_Onchip_SRAM_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6380_4869735803581063996.dir/0001_Onchip_SRAM_gen//mysystem_Onchip_SRAM_component_configuration.pl  --do_build_sim=0  ]
+Info: Onchip_SRAM: Done RTL generation for module 'mysystem_Onchip_SRAM'
+Info: Onchip_SRAM: "mysystem" instantiated altera_avalon_onchip_memory2 "Onchip_SRAM"
+Info: jtag_uart: Starting RTL generation for module 'mysystem_jtag_uart'
+Info: jtag_uart:   Generation command is [exec C:/altera/13.1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.1/quartus/bin/perl/lib -I C:/altera/13.1/quartus/sopc_builder/bin/europa -I C:/altera/13.1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.1/quartus/sopc_builder/bin -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=mysystem_jtag_uart --dir=C:/Users/TeGods/AppData/Local/Temp/alt6380_4869735803581063996.dir/0002_jtag_uart_gen/ --quartus_dir=C:/altera/13.1/quartus --verilog --config=C:/Users/TeGods/AppData/Local/Temp/alt6380_4869735803581063996.dir/0002_jtag_uart_gen//mysystem_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'mysystem_jtag_uart'
+Info: jtag_uart: "mysystem" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: pipeline_bridge_swap_transform: After transform: 10 modules, 27 connections
+Info: No custom instruction connections, skipping transform 
+Info: reset_adaptation_transform: After transform: 12 modules, 31 connections
+Info: vga_system: "mysystem" instantiated vgasystem "vga_system"
+Info: pipeline_bridge_swap_transform: After transform: 33 modules, 103 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 33 modules, 103 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 33 modules, 103 connections
+Info: mm_interconnect_0: "mysystem" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_0"
+Info: pipeline_bridge_swap_transform: After transform: 37 modules, 120 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 37 modules, 120 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 37 modules, 120 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 37 modules, 120 connections
+Info: mm_interconnect_1: "mysystem" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_1"
+Info: pipeline_bridge_swap_transform: After transform: 16 modules, 43 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 16 modules, 43 connections
+Info: merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info: No Avalon connections, skipping transform 
+Info: merlin_hierarchy_transform: After transform: 16 modules, 43 connections
+Info: mm_interconnect_2: "mysystem" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_2"
+Info: irq_mapper: "mysystem" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_mapper_001: "mysystem" instantiated altera_irq_mapper "irq_mapper_001"
+Info: rst_controller: "mysystem" instantiated altera_reset_controller "rst_controller"
+Info: sys_pll: "system_pll" instantiated altera_pll "sys_pll"
+Info: reset_from_locked: "system_pll" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
+Info: fpga_interfaces: "arm_a9_hps" instantiated altera_interface_generator "fpga_interfaces"
+Info: pipeline_bridge_swap_transform: After transform: 1 modules, 0 connections
+Info: No custom instruction connections, skipping transform 
+Info: hps_io: "arm_a9_hps" instantiated altera_hps_io "hps_io"
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 1 connections
+Info: No custom instruction connections, skipping transform 
+Info: vga_pll: "vga_system" instantiated altera_up_avalon_video_pll "vga_pll"
+Info: VGA_Pixel_DMA: Starting Generation of VGA Pixel Buffer
+Info: VGA_Pixel_DMA: "vga_system" instantiated altera_up_avalon_video_pixel_buffer_dma "VGA_Pixel_DMA"
+Info: VGA_Pixel_FIFO: Starting Generation of the Dual Clock Buffer
+Info: VGA_Pixel_FIFO: "vga_system" instantiated altera_up_avalon_video_dual_clock_buffer "VGA_Pixel_FIFO"
+Info: VGA_Pixel_RGB_Resampler: Starting Generation of Video RGB Resampler
+Info: VGA_Pixel_RGB_Resampler: "vga_system" instantiated altera_up_avalon_video_rgb_resampler "VGA_Pixel_RGB_Resampler"
+Info: VGA_Pixel_Scaler: Starting Generation of Video Scaler
+Info: VGA_Pixel_Scaler: "vga_system" instantiated altera_up_avalon_video_scaler "VGA_Pixel_Scaler"
+Info: VGA_Char_Buffer: Starting Generation of Character Buffer
+Info: VGA_Char_Buffer: "vga_system" instantiated altera_up_avalon_video_character_buffer_with_dma "VGA_Char_Buffer"
+Info: VGA_Alpha_Blender: Starting Generation of the Alpha Blender
+Info: VGA_Alpha_Blender: "vga_system" instantiated altera_up_avalon_video_alpha_blender "VGA_Alpha_Blender"
+Info: VGA_Dual_Clock_FIFO: Starting Generation of the Dual Clock Buffer
+Info: VGA_Dual_Clock_FIFO: "vga_system" instantiated altera_up_avalon_video_dual_clock_buffer "VGA_Dual_Clock_FIFO"
+Info: VGA_Controller: Starting Generation of VGA Controller
+Info: VGA_Controller: "vga_system" instantiated altera_up_avalon_video_vga_controller "VGA_Controller"
+Info: Onchip_SRAM_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "Onchip_SRAM_s1_translator"
+Info: arm_a9_hps_h2f_axi_master_agent: "mm_interconnect_0" instantiated altera_merlin_axi_master_ni "arm_a9_hps_h2f_axi_master_agent"
+Info: Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent"
+Info: Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "Onchip_SRAM_s1_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info: addr_router: "mm_interconnect_0" instantiated altera_merlin_router "addr_router"
+Info: id_router: "mm_interconnect_0" instantiated altera_merlin_router "id_router"
+Info: id_router_001: "mm_interconnect_0" instantiated altera_merlin_router "id_router_001"
+Info: limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "limiter"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "burst_adapter"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: cmd_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: rsp_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "width_adapter"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: addr_router: "mm_interconnect_1" instantiated altera_merlin_router "addr_router"
+Info: id_router: "mm_interconnect_1" instantiated altera_merlin_router "id_router"
+Info: cmd_xbar_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info: rsp_xbar_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: vga_system_pixel_dma_master_translator: "mm_interconnect_2" instantiated altera_merlin_master_translator "vga_system_pixel_dma_master_translator"
+Info: vga_system_pixel_dma_master_translator_avalon_universal_master_0_agent: "mm_interconnect_2" instantiated altera_merlin_master_agent "vga_system_pixel_dma_master_translator_avalon_universal_master_0_agent"
+Info: addr_router: "mm_interconnect_2" instantiated altera_merlin_router "addr_router"
+Info: id_router: "mm_interconnect_2" instantiated altera_merlin_router "id_router"
+Info: cmd_xbar_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/Users/TeGods/Desktop/EEC181/lab3/lab3warmup/mysystem/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: video_pll: "vga_pll" instantiated altera_pll "video_pll"
+Info: mysystem: Done "mysystem" with 54 modules, 114 files, 2617830 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
