@@ -15,7 +15,7 @@
             <source_file filepath="true">lab6.c</source_file>
         </source_files>
         <options>
-            <compiler_flags>-O3</compiler_flags>
+            <compiler_flags>-O3 -Wno-unused-variables</compiler_flags>
             <linker_flags>-lm</linker_flags>
             <emulate_unimpl_instructions>false</emulate_unimpl_instructions>
             <use_small_c_library>false</use_small_c_library>

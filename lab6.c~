@@ -162,26 +162,67 @@ int main(void){
 	*HPS_CLK = 0;				// Set HPS simulated clock to 0
 	*oDigits = 0;
 
+	int l, m;
+
+
+
+	// testing out rows
+	for(l=0; l<480; l++){
+
+		*HPS_CLK = 0;				// Set HPS simulated clock to 0
+
+
+		*ReadWrite = 0;
+		*HPS_toMem = l;
+		*Row_Read = 1;
+		*RowAddr = l;
+		
+
+		*HPS_CLK = 1;
+		*HPS_CLK = 0;
+
+		*ReadWrite = 1;
+		*Row_Read = 1;
+		
+		*RowAddr = l;
+
 	
-	*ReadWrite = 0;
-	*HPS_toMem = 2;
-	*Row_Read = 1;
-	*Col_Read = 1;
-	*RowAddr = 8;
-	*ColAddr = 7;
+
+		*HPS_CLK = 1;
+
+		printf("%d ", *HPS_fromMem);
+
+		}
+	printf("\n\n\n\n");	
+	
+	// testing out cols
+	for (m=0; m<640; m++){
+		*HPS_CLK = 0;				// Set HPS simulated clock to 0
+		
 
 
-	*HPS_CLK = 1;
-	*HPS_CLK = 0;
+		*ReadWrite = 0;
+		*HPS_toMem = m;
+		*Col_Read = 1;
+		*ColAddr = m;
 
-	*ReadWrite = 1;
-	*Row_Read = 1;
-	*Col_Read = 1;
-	*RowAddr = 8;
-	*ColAddr = 7;
-	printf("%d \n", *HPS_fromMem);
 
-	*HPS_CLK = 1;
-	printf("Done\n");
+		*HPS_CLK = 1;
+		*HPS_CLK = 0;
+
+		*ReadWrite = 1;
+		*Col_Read = 1;
+	
+		*ColAddr = m;
+	
+
+		*HPS_CLK = 1;
+		if (m == 640/2) printf("\n");
+		printf("%d ", *HPS_fromMem);
+		
+	}
+	
+
+	printf("\n\nDone\n");
 	return 0;
 }
