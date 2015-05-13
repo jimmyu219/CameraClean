@@ -165,7 +165,7 @@ int main(void){
 	int l, m;
 
 
-
+/*
 	// testing out rows
 	for(l=0; l<480; l++){
 
@@ -217,10 +217,11 @@ int main(void){
 	
 
 		*HPS_CLK = 1;
-		if (m == 640/2) printf("\n");
+		if (m == 640/2) printf("\n");	// altera monitor runs out of buffer space
 		printf("%d ", *HPS_fromMem);
 		
 	}
+*/	
 	
 
 	printf("\n\nDone\n");

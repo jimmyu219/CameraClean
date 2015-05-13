@@ -1,12 +1,12 @@
-Fitter Status : Successful - Mon Apr 27 14:35:56 2015
+Fitter Status : Successful - Wed May 13 11:38:56 2015
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
 Revision Name : lab3test
 Top-level Entity Name : lab3test
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Preliminary
-Logic utilization (in ALMs) : 3,992 / 32,070 ( 12 % )
-Total registers : 5406
+Logic utilization (in ALMs) : 3,809 / 32,070 ( 12 % )
+Total registers : 5436
 Total pins : 243 / 457 ( 53 % )
 Total virtual pins : 0
 Total block memory bits : 209,744 / 4,065,280 ( 5 % )

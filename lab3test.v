@@ -226,7 +226,32 @@ CCD_Capture			u3	(
 							.iCLK(CCD_PIXCLK),
 							.iRST(DLY_RST_2)
 						);
+						
+integer row=1;
+integer col=1;
 
+// pointer to row/col for accumulator
+// want to start at row=0, col=0; when col>640, reset back to col=0, row now = 1
+// if col>640 & row>480, reset back to 0,0
+
+// make sure col,row corresponds to x,y 
+// Only increment ROW/COL when {FVAL,LVAL} == 2b’11
+always@(posedge X_Cont[0])
+begin
+	if(Y_Cont[0])
+		col = col + 1;
+		if(col>640)	col=1;
+end
+
+always@(posedge Y_Cont[0])
+begin
+	row = row + 1;
+	if(row>480) row=1;
+end
+
+
+
+						
 RAW2RGB				u4	(	
 							.iCLK(CCD_PIXCLK),
 							.iRST(DLY_RST_1),
@@ -298,7 +323,9 @@ SEG7_LUT_8 			u5	(
 							.oSEG5(HEX5),
 							.oSEG6(),
 							.oSEG7(),
-							.iDIG ({dig6, dig5, dig4, dig3, dig2, dig1})		// Show the proposed digits on the HEX displays
+						//	.iDIG ({dig6, dig5, dig4, dig3, dig2, dig1})		// Show the proposed digits on the HEX displays
+						//	.iDIG ({row[11:0],col[11:0]})
+							.iDIG ({col[23:0]})
 						);
 						
 wire [3:0] dig6;
