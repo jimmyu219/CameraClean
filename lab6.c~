@@ -23,6 +23,7 @@ volatile int * RowAddr			= (int *) 0xFF200030;
 volatile int * ColAddr			= (int *) 0xFF200020;
 
 volatile int * HPS_CLK			= (int *) 0xFF200060;
+volatile int * HPS_CLK2			= (int *) 0xFF200100;
 volatile int * ReadWrite		= (int *) 0xFF200040;
 
 volatile int * HPS_toMem		= (int *) 0xFF2000A0;
@@ -32,7 +33,6 @@ volatile int * Row_Read		= (int *) 0xFF200010;
 volatile int * Col_Read		= (int *) 0xFF200000;
 
 
-//volatile int * DDR3			= (int *) 0x0010000; 	// Up to 0xFFF0000
 
 void delay(int v)
 {
@@ -44,6 +44,11 @@ void delay(int v)
 		{}
 }
 
+void Clock(void)
+{
+	*HPS_CLK = 0;
+	*HPS_CLK = 1;
+}
 
 int myPow(int n)
 {
@@ -99,7 +104,6 @@ int main(void){
 	
 	// Image variables
 	int imgArr[480][640];				// Array that holds image
-	int prevAck;					// Hold the previous ACK value, we check if that changes
 	
 	// We use a buffer of 10% on each side
 	int colsMin		= 64; 		// 640*10%
@@ -136,11 +140,12 @@ int main(void){
 	int digitHeight = 0;
 	int segmentIntensity = 0;			// Accumulator to check if the segment isn't all white pixels
 	int digitArr[784] = { 0 };
-	
+	//int roi[400]=[0];
+	//int bArray[28][28];
 	// Neural network variables
-	double sum;
-	double Z1[200];
-	double Z2[200];
+	float sum;
+	float Z1[200];
+	float Z2[200];
 	int max = 0;
 	int pos = 0;
 	
@@ -162,68 +167,518 @@ int main(void){
 	*HPS_CLK = 0;				// Set HPS simulated clock to 0
 	*oDigits = 0;
 
-	int l, m;
-
-
-/*
-	// testing out rows
-	for(l=0; l<480; l++){
-
-		*HPS_CLK = 0;				// Set HPS simulated clock to 0
-
-
-		*ReadWrite = 0;
-		*HPS_toMem = l;
-		*Row_Read = 1;
-		*RowAddr = l;
-		
-
-		*HPS_CLK = 1;
-		*HPS_CLK = 0;
-
-		*ReadWrite = 1;
-		*Row_Read = 1;
-		
-		*RowAddr = l;
-
+	initCounters(); 
+	volatile unsigned int time;
 	
-
-		*HPS_CLK = 1;
-
-		printf("%d ", *HPS_fromMem);
-
-		}
-	printf("\n\n\n\n");	
-	
-	// testing out cols
-	for (m=0; m<640; m++){
-		*HPS_CLK = 0;				// Set HPS simulated clock to 0
-		
-
-
-		*ReadWrite = 0;
-		*HPS_toMem = m;
-		*Col_Read = 1;
-		*ColAddr = m;
-
-
-		*HPS_CLK = 1;
-		*HPS_CLK = 0;
-
-		*ReadWrite = 1;
-		*Col_Read = 1;
-	
-		*ColAddr = m;
-	
-
-		*HPS_CLK = 1;
-		if (m == 640/2) printf("\n");	// altera monitor runs out of buffer space
-		printf("%d ", *HPS_fromMem);
-		
+	if (RECORD_TIME)
+	{
+		printf("We will print out timing\n");
+		printf("Press Enter to continue or enter (0) to stop timing: ");
+	} else {
+		printf("We will run without timing\n");
+		printf("Press Enter to continue or enter (1) to timing this, and future runs: ");
 	}
-*/	
-	
+	scanf("%d", &RECORD_TIME);
 
-	printf("\n\nDone\n");
+	while(1)
+	{
+		// -----------------------------------------------------------------------------------
+		// 
+		// Reset the variables for next iteration
+		//
+		// -----------------------------------------------------------------------------------
+		for (i = 0; i < 640; i++) colsSumArr[i] = 0;
+		for (i = 0; i < 480; i++) rowsSumArr[i] = 0;
+		
+		
+		
+		//reset col sum and row sum to 0
+		//rowsSumArr[480] = { 0 };
+		//colsSumArr[640] = { 0 };
+		
+		max = -100000000;
+		answer = 0;
+		
+		// -----------------------------------------------------------------------------------
+		// 
+		// Prompt user to begin
+		//
+		// -----------------------------------------------------------------------------------
+		*oState = 1;				// State 1 - Ready
+
+		
+		//scanf("%d", &RECORD_TIME);
+		
+		switch (RECORD_TIME)
+		{
+			case (0):	break;
+			case (1):	break;
+			default:	RECORD_TIME = 0;
+		}
+		
+		*oStart = 0;				// Stop camera
+		delay(2);					// Delay to allow verilog to settle
+		
+		// -----------------------------------------------------------------------------------
+		// 
+		// Read SDRAM -> imgArr[480][640] array of 1's and 0's
+		//	The image is made either 255 or 0 in the verilog code
+		//  Convert to 0's and 1's in C
+		//
+		// -----------------------------------------------------------------------------------
+		
+		*oState = 3;				// State 2 - Reading image
+		
+		if (RECORD_TIME) time = getCycles();
+			
+		for (rows = 0; rows < 480; rows++)	// 640x480
+		{	
+			for(cols = 0; cols < 640; cols++)
+			{
+				Clock();
+				imgArr[rows][cols] = *iImgData;		// 0's and 1's are determined in verilog
+			}
+		}
+		
+		//if (RECORD_TIME) printf("Time to extract image: %d cycles\n", getCycles() - time);
+		
+		// Restart Clock because we're done with the SDRAM
+		*oStart = 1;
+		
+		// Debug print loop
+		/*
+		printf("Printing out full image array with buffers\n");
+		for (rows = 48; rows < 432; rows++)	// 640x480
+		{
+			for(cols = 64; cols < 576; cols++)
+			{					// Get current value of counter[1]		
+				if (imgArr[rows][cols])
+					printf(" ");
+				else
+					printf("0");
+			}
+			printf("\n");
+		}
+		*/
+		
+		// -----------------------------------------------------------------------------------
+		// 
+		// Detect white projector space
+		//	Put a 10% buffer on each side:	cols = 64 -> 576 : imgLeftSide -> imgRightSide
+		//									rows = 48 -> 432 : imgTopSide -> imgBotSide
+		//
+		// -----------------------------------------------------------------------------------
+		*oState = 7;				// State 3 - Detect projector
+		
+		if (RECORD_TIME) time = getCycles();
+		
+		// Sum up rows and columns
+		for (cols = colsMin; cols < colsMax; cols++)
+		{
+			for (rows = rowsMin; rows < rowsMax; rows++)
+			{
+				colsSumArr[cols] += imgArr[rows][cols];
+				rowsSumArr[rows] += imgArr[rows][cols];
+			}
+		}
+		
+		//if (RECORD_TIME) printf("Time to sum rows and cols: %d cycles\n", getCycles() - time);
+		if (RECORD_TIME) time = getCycles();
+		
+		// Find max value of rows sum
+		for (rows = 0; rows < 480; rows++)
+		{
+		//	printf("\nThe sum of the rows is: %d\n", rowsSumArr[rows]);
+			if (rowsSumArr[rows] > rowsSumMax)
+				rowsSumMax = rowsSumArr[rows];
+		}
+		
+		// Calculate rows level - 10% less than the max
+		//rowsLevel = rowsSumMax - rowsSumMax * 0.1;
+		rowsLevel = rowsSumMax - (rowsSumMax >> 3);
+		
+		// Find max value of cols sum
+		for (cols = 0; cols < 480; cols++)
+		{
+			printf("\nThe sum of the cols is: %d\n", colsSumArr[cols]);
+			if (colsSumArr[cols] > colsSumMax)
+				colsSumMax = colsSumArr[cols];
+		}
+/*	
+		// Calculate cols level - 5% less than the max
+		//colsLevel = colsSumMax - colsSumMax * 0.05;
+		colsLevel = colsSumMax - (colsSumMax >> 4);
+		
+		//if (RECORD_TIME) printf("Time to find rows/cols max and level: %d cycles\n", getCycles() - time);
+		if (RECORD_TIME) time = getCycles();
+		
+		// Generate the array of binary values for rows and cols
+		for (rows = rowsMin; rows < rowsMax; rows++)
+		{
+			if (rowsSumArr[rows] > rowsLevel)
+				binaryRowsSumArr[rows] = 1;
+			else
+				binaryRowsSumArr[rows] = 0;
+		}
+		for (cols = colsMin; cols < colsMax; cols++)
+		{
+			if (colsSumArr[cols] > colsLevel)
+				binaryColsSumArr[cols] = 1;
+			else
+				binaryColsSumArr[cols] = 0;
+		}
+		
+		// Scan for top of white projector space
+		for (cols = colsMin; cols < colsMax; cols++)
+		{
+			if (binaryColsSumArr[cols] == 1)
+			{
+				projLeft = cols;
+				break;
+			}
+		}
+		
+		// Scan for bottom of white projector space
+		for (cols = colsMax - 1; cols > colsMin - 1; cols--)
+		{
+			if (binaryColsSumArr[cols] == 1)
+			{
+				projRight = cols;
+				break;
+			}
+		}
+		
+		// Scan for left side of white projector space
+		for (rows = rowsMin; rows < rowsMax; rows++)
+		{
+			if (binaryRowsSumArr[rows] == 1)
+			{
+				projTop = rows;
+				break;
+			}			
+		}
+
+		// Scan for right side of white projector space
+		for (rows = rowsMax - 1; rows > rowsMin - 1; rows--)
+		{
+			if (binaryRowsSumArr[rows] == 1)
+			{
+				projBottom = rows;
+				break;
+			}
+		}		
+		
+		//if (RECORD_TIME) printf("Time to find white projector indexes: %d cycles\n", getCycles() - time);
+		
+		// TESTING FOR TIMING IT TAKES TO READ IN 640+480 REGISTERS FROM VERILOG
+		if (RECORD_TIME) time = getCycles();
+		
+		for (i = 0; i < 640; i++)
+		{
+			*oDigits = i;	// Simulate sending a ready signal
+			*oState = i; 	// Simulating the Address we want to read
+			temp = *iImgData;	// Simulate reading in the register value
+		}
+		for (i = 0; i < 480; i++)
+		{
+			*oDigits = i;	// Simulate sending a ready signal
+			*oState = i; 	// Simulating the Address we want to read
+			temp = *iImgData;	// Simulate reading in the register value
+		}
+		
+		if (RECORD_TIME) printf("Time to read from 640+480 registers: %d cycles\n", getCycles() - time);
+		// END TESTING*/
+		
+		/*
+		// Debugging to print out the binary arrays
+		printf("rows: \n");
+		for (rows = rowsMin; rows < rowsMax; rows++)
+		{
+			if (binaryRowsSumArr[rows])
+				printf(".");
+			else
+				printf("0");
+		}
+		printf("\ncols: \n");
+		for (cols = colsMin; cols < colsMax; cols++)
+		{
+			if (binaryColsSumArr[cols])
+				printf(".");
+			else
+				printf("0");
+		}
+		printf("\n");
+		*/
+		
+		/*
+		// Debugging code - print white projector space
+		printf("projLeft: %d, projRight: %d\n", projLeft, projRight);
+		printf("projTop: %d, projBottom: %d\n", projTop, projBottom);
+		
+		for (rows = projTop; rows < projBottom; rows++)
+		{
+			for (cols = projLeft; cols < projRight; cols++)
+			{
+				if (imgArr[rows][cols])
+					printf(" ");
+				else
+					printf("0");
+			}
+			printf("\n");
+		}
+		
+		
+		// -----------------------------------------------------------------------------------
+		// 
+		// Detect ROI black space
+		//	Using the same methods as detecting the white projector space
+		//
+		// -----------------------------------------------------------------------------------
+		*oState = 15;				// State 4 - Detect ROI
+		
+		if (RECORD_TIME) time = getCycles();
+		
+		// Calculate 10% buffer on projector space
+		projTop = projTop + (projTop >> 3);
+		projBottom = projBottom - (projBottom >> 3);
+		projLeft = projLeft + (projLeft >> 3);
+		projRight = projRight - (projRight >> 3);
+		
+		// Scan for top of ROI
+		for (rows = projTop; rows < projBottom; rows++)
+		{
+			if (binaryRowsSumArr[rows] == 0)
+			{
+				roiTop = rows;
+				break;
+			}
+		}
+		
+		// Scan for bottom of ROI
+		for (rows = projBottom - 1; rows > (projTop - 1); rows--)
+		{
+			if (binaryRowsSumArr[rows] == 0)
+			{
+				roiBottom = rows;
+				break;
+			}
+		}
+		
+		// Scan for left of ROI
+		for (cols = projLeft; cols < projRight; cols++)
+		{
+			if (binaryColsSumArr[cols] == 0)
+			{
+				roiLeft = cols;
+				break;
+			}
+		}
+		
+		for (cols = projRight - 1; cols > (projLeft - 1); cols--)
+		{
+			if (binaryColsSumArr[cols] == 0)
+			{
+				roiRight = cols;
+				break;
+			}
+		}
+		
+		//if (RECORD_TIME) printf("Time to find ROI indexes: %d cycles\n", getCycles() - time);
+		
+		/*
+		// Debugging code - Print ROI
+		printf("projLeft: %d, projRight: %d\n", projLeft, projRight);
+		printf("projTop: %d, projBottom: %d\n", projTop, projBottom);
+		
+		for (rows = roiTop; rows < roiBottom; rows++)
+		{
+			for (cols = roiLeft; cols < roiRight; cols++)
+			{
+				if (imgArr[rows][cols])
+					printf(" ");
+				else
+					printf("0");
+			}
+			printf("\n");
+		}
+		
+		
+		// -----------------------------------------------------------------------------------
+		// 
+		// Segmentation loop
+		//	Iterate through the digits of the ROI
+		//	# of digits ~= ROI width / ROI height
+		//	
+		//
+		// -----------------------------------------------------------------------------------
+		*oState = 31;				// State 5 - Segmentation
+		
+		if (RECORD_TIME) time = getCycles();
+		
+		numDigits = round((roiRight - roiLeft)*1.0/(roiBottom - roiTop));
+		digitWidth = (roiRight - roiLeft) / numDigits;
+		digitHeight = roiBottom - roiTop;
+		
+		//if (RECORD_TIME) printf("Time to calculate numDigits, digit w and h: %d cycles\n", getCycles() - time);
+		//printf("Guessing %d digits\n", numDigits);
+		
+		for (currentDigit = 0; currentDigit < numDigits; currentDigit++)
+		{
+			// -----------------------------------------------------------------------------------
+			// 
+			// Resize the segmented digit
+			//
+			// -----------------------------------------------------------------------------------
+			
+			if (RECORD_TIME) time = getCycles();
+			
+			segmentIntensity = 0;
+			// Create a 28x28 by sampling every 1/28th of the ROI
+			for (i = 0; i < 28; i++)
+			{
+				for (j = 0; j < 28; j++)
+				{
+					x = round(i*(digitHeight - 1) / 27);
+					y = round(j*(digitWidth - 1) / 27);
+					
+					// X -> Height, doesn't change
+					// Y -> Width, the index changes as we move across the ROI
+					//digitArr[i + j * 28] = imgArr[roiTop + x][roiLeft + currentDigit*digitWidth + y];
+					digitArr[i + j * 28] = imgArr[roiTop + x][roiLeft + currentDigit*digitWidth + y];
+					//segmentIntensity += digitArr[i + j * 28];
+				}
+			}
+			
+			//if (RECORD_TIME) printf("Resizing digit %d takes %d cycles\n", currentDigit + 1, getCycles() - time);
+			
+			// -----------------------------------------------------------------------------------
+			// 
+			// Check if segment isn't 75%+ white pixels
+			//	It might be a bad segment, so skip
+			//
+			// -----------------------------------------------------------------------------------
+			
+			//if (segmentIntensity > 275)
+			//{
+			//	printf("Skipping detected whitespace\n");
+			//	continue;
+			//}
+			
+			
+			// Debug - print out the 28x28 matrix
+			/*
+			printf("Print 20x20\n");
+			for (i = 0; i<20; i++)
+			{
+				for (j = 0; j<20; j++)
+				{
+					if (digitArr[i + j*20])
+						printf(" ");
+					else
+						printf("0");
+				}
+				printf("\n");
+			}
+			
+			*/
+			
+			/*// TESTING LOOP FOR SIMULATING SENDING 28x28 to FPGA
+			if (RECORD_TIME) time = getCycles();
+			
+			*oState = 1; // Simulate sending a ready signal?
+			
+			for (i = 0; i < 784; i++)
+			{
+				*oState = digitArr[i];
+			}
+			
+			*oState = 0; // Simulate saying we're done
+			
+			if (RECORD_TIME) printf("Sending digit %d to FPGA takes %d cycles\n", currentDigit + 1, getCycles() - time);
+			// END TESTING*/
+			
+			// -----------------------------------------------------------------------------------
+			// 
+			// Send 784x1 to Neural Network
+			//
+			// -----------------------------------------------------------------------------------
+/*			*oState = (*oState << 1) + 1;
+			
+			if (RECORD_TIME) time = getCycles();
+			
+			// Level 1 Weight and bias + sigmoid function
+			for (i = 0; i < 200; i++) 
+			{
+					sum = 0;
+			/* 		for (k = 0; k < 784; k++)
+					{
+						//sum += W1[i][k] * digitArr[k];
+						if (digitArr[k])
+							sum += W1[i][k];
+					}	 */		 
+					
+/*					for (k = 0; k < 784; k++)
+					{
+						if(digitArr[k])
+						{
+							//sum += W1[i][2*28+2+28* ((int)k/24)+k]+k%24;
+							
+							sum += W1[i][k];
+						}
+					}
+					 
+					Z1[i] = 1/(1 + exp(-1*(sum + B1[i])));
+					//Z1[i] = mySigmoid(-1*(sum + B1[i]));
+			}
+			
+			//if (RECORD_TIME) printf("Level 1 calculation of digit %d takes %d cycles\n", currentDigit + 1, getCycles() - time);
+			if (RECORD_TIME) time = getCycles();
+			
+			// Level 2 Weight and bias + sigmoid
+			for (i = 0; i < 200; i++) 
+			{
+					sum = 0;
+					for (k = 0; k < 200; k++) 
+					{
+						sum += W2[i][k] * Z1[k];
+					}
+					Z2[i] = 1 / (1 + exp(-1*(sum + B2[i]))) ;
+					//Z2[i] = mySigmoid(-1*(sum + B2[i]));
+			}
+			
+			//if (RECORD_TIME) printf("Level 2 calculation of digit %d takes %d cycles\n", currentDigit + 1, getCycles() - time);
+			if (RECORD_TIME) time = getCycles();
+			
+			// Level 3
+			for (i = 0; i < 10; i++)
+			{
+					sum = 0;
+					for (k = 0; k < 200; k++) 
+					{
+						sum += W3[i][k] * Z2[k];
+					}
+					
+					if (sum > max)
+					{
+						max = sum;
+						pos = i + 1;
+					}
+			}
+			
+			//if (RECORD_TIME) printf("Level 3 calculation of digit %d takes %d cycles\n", currentDigit + 1, getCycles() - time);
+			if (RECORD_TIME) time = getCycles();
+			
+			//answer = answer + pow(10.0, (numDigits-(currentDigit+1)))*(pos%10);
+			answer = answer + myPow(numDigits - (currentDigit + 1)) * myMod(pos);
+			
+			//if (RECORD_TIME) printf("Time to guess digit #%d: %d cycles\n", currentDigit + 1, getCycles() - time);
+			
+		} // End for (currentDigit....
+		
+		*oDigits = answer;
+		printf("The detected digits are: %d\n\n", answer);
+*/		
+	} // End while(1)
+	
 	return 0;
 }

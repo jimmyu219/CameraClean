@@ -1,5 +1,5 @@
 Flow report for lab3test
-Wed May 13 11:41:52 2015
+Mon May 18 13:18:47 2015
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Wed May 13 11:41:52 2015       ;
+; Flow Status                     ; Successful - Mon May 18 13:18:47 2015       ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                   ; lab3test                                    ;
 ; Top-level Entity Name           ; lab3test                                    ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Preliminary                                 ;
-; Logic utilization (in ALMs)     ; 3,809 / 32,070 ( 12 % )                     ;
-; Total registers                 ; 5436                                        ;
+; Logic utilization (in ALMs)     ; 14,592 / 32,070 ( 46 % )                    ;
+; Total registers                 ; 16794                                       ;
 ; Total pins                      ; 243 / 457 ( 53 % )                          ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 209,744 / 4,065,280 ( 5 % )                 ;
+; Total block memory bits         ; 198,544 / 4,065,280 ( 5 % )                 ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -67,7 +67,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/13/2015 11:33:57 ;
+; Start date & time ; 05/18/2015 13:05:07 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lab3test            ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ applicable agreement for further details.
 +---------------------------------------+------------------------------------------------------------------------+---------------+-------------------------------------------+----------------+
 ; Assignment Name                       ; Value                                                                  ; Default Value ; Entity Name                               ; Section Id     ;
 +---------------------------------------+------------------------------------------------------------------------+---------------+-------------------------------------------+----------------+
-; COMPILER_SIGNATURE_ID                 ; 203178706240666.143154203723131                                        ; --            ; --                                        ; --             ;
+; COMPILER_SIGNATURE_ID                 ; 203178706240666.143197950701656                                        ; --            ; --                                        ; --             ;
 ; ECO_REGENERATE_REPORT                 ; On                                                                     ; Off           ; --                                        ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                ; Verilog Hdl                                                            ; --            ; --                                        ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                   ; ModelSim-Altera (Verilog)                                              ; <None>        ; --                                        ; --             ;
@@ -230,7 +230,7 @@ applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY              ; output_files                                                           ; --            ; --                                        ; --             ;
 ; SLD_FILE                              ; mysystem/synthesis/mysystem.regmap                                     ; --            ; --                                        ; --             ;
 ; SLD_FILE                              ; mysystem/synthesis/mysystem.debuginfo                                  ; --            ; --                                        ; --             ;
-; SLD_INFO                              ; QSYS_NAME mysystem HAS_SOPCINFO 1 GENERATION_ID 1430167485             ; --            ; mysystem                                  ; --             ;
+; SLD_INFO                              ; QSYS_NAME mysystem HAS_SOPCINFO 1 GENERATION_ID 1431977487             ; --            ; mysystem                                  ; --             ;
 ; SOPCINFO_FILE                         ; mysystem/synthesis/../../mysystem.sopcinfo                             ; --            ; --                                        ; --             ;
 ; SYNTHESIS_ONLY_QIP                    ; On                                                                     ; --            ; --                                        ; --             ;
 ; USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ; On                                                                     ; Off           ; --                                        ; --             ;
@@ -242,12 +242,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:41     ; 1.9                     ; 1162 MB             ; 00:01:16                           ;
-; Fitter                    ; 00:03:05     ; 1.5                     ; 2778 MB             ; 00:03:48                           ;
-; Assembler                 ; 00:00:39     ; 1.0                     ; 965 MB              ; 00:00:22                           ;
-; TimeQuest Timing Analyzer ; 00:01:22     ; 2.0                     ; 1648 MB             ; 00:01:22                           ;
-; EDA Netlist Writer        ; 00:00:21     ; 1.0                     ; 1149 MB             ; 00:00:08                           ;
-; Total                     ; 00:07:08     ; --                      ; --                  ; 00:06:56                           ;
+; Analysis & Synthesis      ; 00:02:00     ; 1.8                     ; 1240 MB             ; 00:01:43                           ;
+; Fitter                    ; 00:06:07     ; 2.0                     ; 2981 MB             ; 00:09:52                           ;
+; Assembler                 ; 00:00:46     ; 1.0                     ; 1120 MB             ; 00:00:31                           ;
+; TimeQuest Timing Analyzer ; 00:03:21     ; 2.0                     ; 2000 MB             ; 00:04:55                           ;
+; EDA Netlist Writer        ; 00:00:30     ; 1.0                     ; 1400 MB             ; 00:00:16                           ;
+; Total                     ; 00:12:44     ; --                      ; --                  ; 00:17:17                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

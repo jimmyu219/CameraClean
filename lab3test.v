@@ -227,8 +227,9 @@ CCD_Capture			u3	(
 							.iRST(DLY_RST_2)
 						);
 						
-integer row=1;
-integer col=1;
+
+
+
 
 // pointer to row/col for accumulator
 // want to start at row=0, col=0; when col>640, reset back to col=0, row now = 1
@@ -236,18 +237,18 @@ integer col=1;
 
 // make sure col,row corresponds to x,y 
 // Only increment ROW/COL when {FVAL,LVAL} == 2b’11
-always@(posedge X_Cont[0])
-begin
-	if(Y_Cont[0])
-		col = col + 1;
-		if(col>640)	col=1;
-end
-
-always@(posedge Y_Cont[0])
-begin
-	row = row + 1;
-	if(row>480) row=1;
-end
+//always@(posedge X_Cont[0])
+//begin
+//	if(Y_Cont[0])
+//		col = col + 1;
+//	if(col>640)	col=1;
+//end
+//
+//always@(posedge Y_Cont[0])
+//begin
+//	row = row + 1;
+//	if(row>480) row=1;
+//end
 
 
 
@@ -305,13 +306,13 @@ wire [9:0] HPS_Col_Addr;
 reg [9:0] rowDataIn;
 reg [9:0] colDataIn;
 
-// Logic for HPS to read the memory
-always@(posedge counter[0])
-begin
-		rowDataIn <= rowMem[HPS_Row_Addr];
-	
-		colDataIn <= colMem[HPS_Col_Addr];
-end
+//// Logic for HPS to read the memory
+//always@(posedge counter[0])
+//begin
+//		rowDataIn <= rowMem[HPS_Row_Addr];
+//	
+//		colDataIn <= colMem[HPS_Col_Addr];
+//end
 
 
 SEG7_LUT_8 			u5	(	
@@ -324,8 +325,9 @@ SEG7_LUT_8 			u5	(
 							.oSEG6(),
 							.oSEG7(),
 						//	.iDIG ({dig6, dig5, dig4, dig3, dig2, dig1})		// Show the proposed digits on the HEX displays
-						//	.iDIG ({row[11:0],col[11:0]})
-							.iDIG ({col[23:0]})
+						//	.iDIG ({rows[11:0],cols[11:0]})
+						//	.iDIG (rows[SW[8:1]])
+							.iDIG (cols[SW[8:1]])
 						);
 						
 wire [3:0] dig6;
@@ -422,6 +424,59 @@ initial counter = 1;
 
 always@(posedge HPS_CLK) counter <= counter + 1;
 
+always@(posedge HPS_CLK2)
+begin
+	rowDataIn <= rows[HPS_Row_Addr];
+	colDataIn <= cols[HPS_Col_Addr];
+end
+
+
+//always@(posedge counter)
+//begin
+//	if (col > 640) 
+//	begin
+//		col = 1;
+//		row = row + 1;
+//		if(row>480)
+//			row = 1;
+//	end
+//	else begin
+//		cols[col] <= cols[col] + imgDataIn;
+//		rows[row] <= rows[row] + imgDataIn;
+//		col = col + 1;
+//	end
+//	
+//	
+//end
+
+
+// accumulator stuff
+integer row=1;
+integer col=0;
+
+reg 	[9:0]	rows[479:0];  
+reg 	[9:0]	cols[639:0];
+
+always@(posedge counter[0])
+begin
+	if(!HPS_Capture_Start)
+	begin
+		if(col!=0)
+		begin
+			cols[col] <= cols[col] + imgDataIn;
+			rows[row] <= rows[row] + imgDataIn;
+		end
+		col = col + 1;
+		if(col>640)	
+		begin
+			col = 1;
+			row = row + 1;
+		end
+	end
+end
+
+
+
 wire [7:0] imgDataIn;
 assign imgDataIn = (Read_DATA1[7:0] > SW[8:1]) ? 1 : 0;
 
@@ -456,6 +511,7 @@ wire [9:0] HPS_State;
 		  
 		  .startsignal_export       (HPS_Capture_Start),       //         startsignal.export
         .hps_clk_out_export       (HPS_CLK),       //         hps_clk_out.export
+		  .hps_clk2_out_export      (HPS_CLK2),							
 		  .verilog_ack_in_export    (counter[1]),    //      verilog_ack_in.export
 		  
         .imgdata_in_export        (imgDataIn),        //          imgdata_in.export

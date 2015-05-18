@@ -16,7 +16,7 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "18";
          type = "int";
       }
    }
@@ -32,7 +32,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "20";
          type = "int";
       }
    }
@@ -41,6 +41,14 @@
       datum _sortIndex
       {
          value = "14";
+         type = "int";
+      }
+   }
+   element HPS_CLK2
+   {
+      datum _sortIndex
+      {
+         value = "15";
          type = "int";
       }
    }
@@ -88,7 +96,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "16";
          type = "int";
       }
    }
@@ -96,7 +104,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "17";
          type = "int";
       }
    }
@@ -112,7 +120,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "19";
          type = "int";
       }
    }
@@ -156,14 +164,6 @@
          type = "int";
       }
    }
-   element HPS_fromMem.s1
-   {
-      datum baseAddress
-      {
-         value = "112";
-         type = "String";
-      }
-   }
    element Verilog_ACK.s1
    {
       datum baseAddress
@@ -172,19 +172,11 @@
          type = "String";
       }
    }
-   element ColData.s1
+   element HPS_State.s1
    {
       datum baseAddress
       {
-         value = "80";
-         type = "String";
-      }
-   }
-   element ImageData.s1
-   {
-      datum baseAddress
-      {
-         value = "176";
+         value = "128";
          type = "String";
       }
    }
@@ -196,19 +188,19 @@
          type = "String";
       }
    }
-   element RowData.s1
+   element start.s1
    {
       datum baseAddress
       {
-         value = "208";
+         value = "224";
          type = "String";
       }
    }
-   element HPS_CLK.s1
+   element HPS_fromMem.s1
    {
       datum baseAddress
       {
-         value = "96";
+         value = "112";
          type = "String";
       }
    }
@@ -228,27 +220,51 @@
          type = "String";
       }
    }
-   element HPS_Digits.s1
+   element HPS_CLK.s1
    {
       datum baseAddress
       {
-         value = "144";
+         value = "96";
          type = "String";
       }
    }
-   element start.s1
+   element Col_Read.s1
    {
       datum baseAddress
       {
-         value = "224";
+         value = "0";
          type = "String";
       }
    }
-   element HPS_State.s1
+   element ColData.s1
    {
       datum baseAddress
       {
-         value = "128";
+         value = "80";
+         type = "String";
+      }
+   }
+   element RowData.s1
+   {
+      datum baseAddress
+      {
+         value = "208";
+         type = "String";
+      }
+   }
+   element Row_Read.s1
+   {
+      datum baseAddress
+      {
+         value = "16";
+         type = "String";
+      }
+   }
+   element HPS_CLK2.s1
+   {
+      datum baseAddress
+      {
+         value = "256";
          type = "String";
       }
    }
@@ -268,19 +284,19 @@
          type = "String";
       }
    }
-   element Row_Read.s1
+   element HPS_Digits.s1
    {
       datum baseAddress
       {
-         value = "16";
+         value = "144";
          type = "String";
       }
    }
-   element Col_Read.s1
+   element ImageData.s1
    {
       datum baseAddress
       {
-         value = "0";
+         value = "176";
          type = "String";
       }
    }
@@ -445,6 +461,11 @@
  <interface
    name="colread_out"
    internal="Col_Read.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="hps_clk2_out"
+   internal="HPS_CLK2.external_connection"
    type="conduit"
    dir="end" />
  <module kind="altera_pll" version="13.1" enabled="1" name="system_pll_0">
@@ -1389,6 +1410,20 @@
   <parameter name="width" value="1" />
   <parameter name="clockRate" value="50000000" />
  </module>
+ <module kind="altera_avalon_pio" version="13.1" enabled="1" name="HPS_CLK2">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
  <connection
    kind="avalon"
    version="13.1"
@@ -1800,6 +1835,25 @@
    version="13.1"
    start="sys_sdram_pll_0.reset_source"
    end="Row_Read.reset" />
+ <connection
+   kind="avalon"
+   version="13.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="HPS_CLK2.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="reset"
+   version="13.1"
+   start="sys_sdram_pll_0.reset_source"
+   end="HPS_CLK2.reset" />
+ <connection
+   kind="clock"
+   version="13.1"
+   start="sys_sdram_pll_0.sys_clk"
+   end="HPS_CLK2.clk" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="false" />
